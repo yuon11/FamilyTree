@@ -11,9 +11,24 @@ app.config['SECRET_KEY'] = 'your_secret_key'
 # AWS Cognito Setup
 client = boto3.client('cognito-idp', region_name='us-west-2')
 
-USER_POOL_ID = 'us-west-2_example'  # Replace with your Cognito User Pool ID
-CLIENT_ID = 'example_client_id'  # Replace with your Cognito App Client ID
+USER_POOL_ID = 'us-east-2_II9NpY4Sm'  # Replace with your Cognito User Pool ID
+CLIENT_ID = 'rb1iq7rng5e2bbn2n7s4qduf9'  # Replace with your Cognito App Client ID
 
+def get_secret():
+    secret_name = "your_secret_key_name"
+    region_name = "us-west-2"  # Replace with your AWS region
+
+    # Create a Secrets Manager client
+    session = boto3.session.Session()
+    client = session.client(service_name='secretsmanager', region_name=region_name)
+
+    try:
+        get_secret_value_response = client.get_secret_value(SecretId=secret_name)
+        secret = get_secret_value_response['SecretString']
+        return secret
+    except ClientError as e:
+        # Handle error if secret can't be fetched
+        return None
 
 # Sign-up form
 class RegistrationForm(FlaskForm):
@@ -48,7 +63,6 @@ def signup():
 
         except ClientError as e:
             flash(f"Error during sign-up: {e.response['Error']['Message']}", 'danger')
-
     return render_template('signup.html', form=form)
 
 
