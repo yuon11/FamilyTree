@@ -1,5 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, flash, request, session
 import boto3
+import os
 from botocore.exceptions import ClientError
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
@@ -90,7 +91,6 @@ def login():
 
         except ClientError as e:
             flash(f"Login error: {e.response['Error']['Message']}", 'danger')
-
     return render_template('login.html', form=form)
 
 
@@ -98,7 +98,12 @@ def login():
 def index():
     if 'id_token' in session:
         return "You are logged in!"
-    return "Welcome to the home page!"
+    # return "Welcome to the home page!"
+    # return render_template('F:\\Users\\Yuon\\PersonalProjects\\FamilyTree\\index.html')
+    # get the current working directory
+    current_working_directory = os.getcwd()
+
+    return render_template('index.html')
 
 
 @app.route('/logout')
