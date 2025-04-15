@@ -1,32 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    .content {
+        max-width: 500px;
+        margin-left: 35%;
+        margin-right: 35%;
+        margin-top: 15%;
+        padding-top: 2%;
+        padding-bottom: 2%;
+        background-color:  #C0C0C0;
+    }
+
+    .imgBackground {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+</style>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign Up</title>
 </head>
-<body>
-    <h2>Sign Up</h2>
-    <form method="POST" action="">
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
-        </p>
-        <p>
-            {{ form.email.label }}<br>
-            {{ form.email(size=32) }}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-        </p>
-        <p>
-            {{ form.confirm_password.label }}<br>
-            {{ form.confirm_password(size=32) }}
-        </p>
-        <p>{{ form.submit() }}</p>
-    </form>
-    <p>Already have an account? <a href="{{ url_for('login') }}">Log in</a></p>
+<body class="imgBackground" background="{{ url_for('static', filename='FamilyTree.jpg') }}">
+    <div class="content" align="center" style="opacity:0.95">
+        <h1>Family Tree</h1>
+        <h2>Sign Up</h2>
+        <a href="{{ url_for('static', filename='') }}">Powered by Y.F. Tech</a><br><br />
+        <form method="POST" action="">
+            {{ form.hidden_tag() }}
+            <p>
+                {{ form.username.label }}<br>
+                {{ form.username(size=32) }}
+            </p>
+            <p>
+                {{ form.email.label }}<br>
+                {{ form.email(size=32) }}
+            </p>
+            <p>
+                {{ form.password.label }}<br>
+                {{ form.password(size=32) }}
+            </p>
+            <p>
+                {{ form.confirm_password.label }}<br>
+                {{ form.confirm_password(size=32) }}
+            </p>
+            <p>{{ form.submit() }}</p>
+        </form>
+        <p>Already have an account? <a href="{{ url_for('index') }}">Log in</a></p>
+    </div>
 </body>
 </html>
