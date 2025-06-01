@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Photo Gallery</title>
   <link rel="stylesheet" href="../../../css/photo_gallery.css" /> 
+  <script src="https://unpkg.com/aws-amplify@5.0.4/dist/aws-amplify.min.js"></script>
 </head>
 <body>
 
@@ -18,6 +19,9 @@
     <a class="prev" onclick="changeImage(-1)">&#10094;</a>
     <a class="next" onclick="changeImage(1)">&#10095;</a>
   </div>
+
+  <!-- <script type="module" src="../../../javascript/s3GalleryLoader.js">
+  </script> -->
 </body>
 <script src="../../../javascript/photo_gallery.js"></script>
 </html>
