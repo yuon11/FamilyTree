@@ -27,16 +27,16 @@ if (gallery) {
         img.style.display = "none"; // Or show a fallback image
       };
       img.onclick = () => openModal(index);
+      img.onerror = () => {
+        img.src = 'fallback.jpg'; // Your placeholder image
+      };
+
       gallery.appendChild(img);
     }
   });
 } else {
   console.error("Cannot build gallery: missing #gallery container");
 }
-
-img.onerror = () => {
-  img.src = 'fallback.jpg'; // Your placeholder image
-};
 
 function openModal(index) {
   currentIndex = index;
