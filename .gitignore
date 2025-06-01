@@ -1,2 +1,5 @@
-.vs*
+*.vs*
 .vs/*
+.vs/FamilyTree/v16/.suo
+.vs/VSWorkspaceState.json
+.vs/slnx.sqlite
